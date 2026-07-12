@@ -162,7 +162,7 @@ export default function App() {
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-12 text-center -translate-y-[20%] max-w-4xl mx-auto w-full">
           
           <h1 className="font-instrument text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight whitespace-nowrap mb-8 select-none leading-none">
-            Know it then <em className="italic font-serif">all</em>.
+          I think Therefore <em className="italic font-serif">I am</em>.
           </h1>
 
           {/* Email input pill */}

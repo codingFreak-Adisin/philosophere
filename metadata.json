@@ -1,0 +1,6 @@
+{
+  "name": "Asme",
+  "description": "A single-page liquid glass landing site featuring Instrument Serif typography and interactive video loops.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -113,8 +113,9 @@ export default function ArticlesPage() {
 
         {usingFallback && !loading && (
           <p className="articles-fallback-note">
-            Showing local seed data — set <code>VITE_SUPABASE_URL</code> and{' '}
-            <code>VITE_SUPABASE_ANON_KEY</code> and run the SQL migration in{' '}
+            Showing local seed data — set <code>SUPABASE_URL</code> and{' '}
+            <code>SUPABASE_ANON_KEY</code> (in <code>.env.local</code> or your
+            host’s build env) and run the SQL migration in{' '}
             <code>supabase/migrations/0001_blog_posts.sql</code> to load from
             Supabase.
           </p>

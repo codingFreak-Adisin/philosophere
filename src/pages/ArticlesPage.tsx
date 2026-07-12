@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Globe } from 'lucide-react';
 import { useBlogPosts } from '../hooks/useBlogPosts';
 import type { BlogPost } from '../data/blogPosts';
 import VideoMedia from '../components/VideoMedia';
@@ -23,8 +22,8 @@ export default function ArticlesPage() {
     <div className="articles-page">
       <div className="articles-topbar">
         <Link to="/" className="articles-topbar__brand">
-          <Globe className="w-5 h-5" />
-          Asme
+          <img src="/logo.png" alt="Philosophere logo" className="h-7 w-7 rounded-full object-cover" />
+          Philosophere
         </Link>
         <Link to="/" className="articles-topbar__back">
           ← Back to home

@@ -62,7 +62,7 @@ export default function PhilosophySection() {
             <div className="flex flex-col">
               <p className="text-white/40 text-xs tracking-widest uppercase mb-4">Shape the future</p>
               <p className="text-white/70 text-base md:text-lg leading-relaxed font-sans">
-                We believe that the best work emerges when curiosity meets conviction. Our process is designed to uncover hidden opportunities and translate them into experiences that resonate long after the first impression.
+                We believe that the best work emerges when rigorous inquiry meets conviction. Our process is designed to dismantle assumptions, reveal the invisible frameworks of a challenge, and translate them into enduring forms that define their era.
               </p>
             </div>
           </motion.div>

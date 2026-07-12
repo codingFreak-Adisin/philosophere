@@ -34,7 +34,7 @@ export default function FeaturedVideoSection() {
             <div className="liquid-glass rounded-2xl p-6 md:p-8 max-w-md w-full">
               <p className="text-white/50 text-xs tracking-widest uppercase mb-3">Our Approach</p>
               <p className="text-white text-sm md:text-base leading-relaxed font-sans">
-                We believe in the power of curiosity-driven exploration. Every project starts with a question, and every answer opens a new door to innovation.
+                We look beneath the surface to examine the unseen structures governing a challenge. Our methodology fuses deep philosophical inquiry with precise execution. For us, innovation is not a product of chance, but the inevitable result of structured, critical thinking.
               </p>
             </div>
 

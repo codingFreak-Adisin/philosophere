@@ -130,7 +130,7 @@ export default function App() {
             {/* Left */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center gap-2 cursor-pointer group">
-                <Globe className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
+                <img src="/logo.png" alt="Philosophere logo" className="h-8 w-8 rounded-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 <span className="text-white font-semibold text-lg tracking-tight">Philosophere</span>
               </Link>
               <div className="hidden md:flex items-center gap-8 ml-8">
@@ -272,7 +272,7 @@ export default function App() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.01)_0%,_transparent_60%)] pointer-events-none" />
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
           <div className="flex items-center gap-2">
-            <Globe className="w-5 h-5 text-white/40" />
+            <img src="/logo.png" alt="Philosophere logo" className="h-6 w-6 rounded-full object-cover" />
             <span className="text-white/40 text-sm font-semibold">Philosophere © 2026</span>
           </div>
           <div className="flex gap-8 text-xs text-white/40">

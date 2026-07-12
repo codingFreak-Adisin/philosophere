@@ -28,9 +28,8 @@ export default function AboutSection() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight font-instrument"
         >
-          <span className="italic text-white/60">Pioneering then ideas</span> for{' '}
-          <br className="hidden md:inline" />
-          <span className="italic text-white/60">minds that then create, build, and inspire.</span>
+          <span className="italic text-white/60">We examine</span> the{' '}
+          <span className="italic text-white/60">invisible frameworks</span> that shape human potential.
         </motion.h2>
       </div>
     </section>

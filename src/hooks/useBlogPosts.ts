@@ -39,7 +39,7 @@ export function useBlogPosts(): UseBlogPostsResult {
         const { data, error } = await supabase
           .from('blog_posts')
           .select(
-            'id, type, badge, title, description, author, category, category_color, media_url, display_order'
+            'id, type, badge, title, description, author, category, category_color, media_url, display_order, slug'
           )
           .order('display_order', { ascending: true });
 

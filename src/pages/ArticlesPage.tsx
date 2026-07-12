@@ -57,7 +57,7 @@ export default function ArticlesPage() {
 
         {/* Featured post */}
         {featured && (
-          <article className="articles-featured">
+          <Link to={`/articles/${featured.id}`} className="articles-featured">
             <div className="articles-featured__media">
               <VideoMedia
                 src={featured.media_url}
@@ -85,14 +85,18 @@ export default function ArticlesPage() {
                 />
               </div>
             </div>
-          </article>
+          </Link>
         )}
 
         {/* Blog grid */}
         {standards.length > 0 && (
           <section className="articles-grid">
             {standards.map((post: BlogPost) => (
-              <article key={post.id} className="articles-card">
+              <Link
+                key={post.id}
+                to={`/articles/${post.id}`}
+                className="articles-card"
+              >
                 <VideoMedia
                   src={post.media_url}
                   alt={post.title}
@@ -105,7 +109,7 @@ export default function ArticlesPage() {
                     color={post.category_color}
                   />
                 </div>
-              </article>
+              </Link>
             ))}
           </section>
         )}

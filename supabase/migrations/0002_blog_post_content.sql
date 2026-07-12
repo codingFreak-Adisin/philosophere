@@ -1,42 +1,26 @@
-export type BlogPostType = 'featured' | 'standard';
+-- ============================================================================
+-- Adds full-article body content + a URL slug to blog_posts so each card can
+-- open a dedicated article page. Run this in the Supabase SQL editor (or
+-- `supabase db push`) after 0001_blog_posts.sql.
+-- ============================================================================
 
-export interface BlogPost {
-  id: string;
-  type: BlogPostType;
-  badge?: string;
-  title: string;
-  description?: string;
-  author?: string;
-  category: string;
-  category_color: string;
-  media_url: string;
-  display_order: number;
-  slug?: string;
-  content?: string;
-  created_at?: string;
-}
+alter table public.blog_posts
+  add column if not exists slug    text,
+  add column if not exists content text;
 
-/**
- * Local seed data used when Supabase is not configured or the fetch fails.
- * Mirrors the rows that the SQL migration inserts into the `blog_posts`
- * table so the page renders identically in both modes.
- */
-export const seedBlogPosts: BlogPost[] = [
-  {
-    id: 'featured-1',
-    type: 'featured',
-    badge: 'Must Read',
-    title: 'Full-Frame vs. Crop Sensor: Which for Photography?',
-    description:
-      "An honest look at the real-world differences between these camera systems to help you choose what's actually right for your photography needs.",
-    author: 'By August Renner (c)',
-    category: 'Gear',
-    category_color: '#7d1a4a',
-    media_url:
-      'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_155500_808e6fdd-761f-4acd-b3be-cb7e6e700def.mp4',
-    display_order: 0,
-    slug: 'full-frame-vs-crop-sensor',
-    content: `## The real question isn't the sensor — it's the photographer
+-- Slug should be unique across posts so article URLs are stable.
+-- Nulls are allowed so older rows / drafts without a slug still work.
+drop policy if exists "blog_posts content public read" on public.blog_posts;
+create unique index if not exists blog_posts_slug_key
+  on public.blog_posts (slug)
+  where slug is not null;
+
+-- ----------------------------------------------------------------------------
+-- Seed body content for the rows inserted by 0001_blog_posts.sql.
+-- Content is Markdown — rendered client-side by src/lib/markdown.ts.
+-- ----------------------------------------------------------------------------
+update public.blog_posts set slug = 'full-frame-vs-crop-sensor',
+  content = $markdown$## The real question isn't the sensor — it's the photographer
 
 When I started out, I was convinced that a **full-frame sensor** was the price of admission to "serious" photography. Every forum, every gear video, every second-hand opinion pointed the same direction: *full-frame or bust.* Years later, having shot weddings on both, I think that framing is mostly wrong — and a little unhelpful.
 
@@ -64,19 +48,12 @@ Crop (APS-C) sensors aren't a compromise — they're a *different tool.*
 
 If you shoot portraits, events, or anything where subject separation and low light dominate — full-frame rewards you. If you travel light, shoot wildlife, or are still finding your voice — a crop sensor will make you a better photographer faster, because you'll spend less time babying gear and more time making pictures.
 
-Don't upgrade your sensor until you can name the specific shot your current camera can't take. That's the only honest reason.`,
-  },
-  {
-    id: 'standard-1',
-    type: 'standard',
-    title: 'Finding Natural Light in Unexpected Places',
-    category: 'Lighting',
-    category_color: '#2c4c34',
-    media_url:
-      'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260506_030111_a9e15665-d379-4a7f-8116-695bbe452ad1.mp4',
-    display_order: 1,
-    slug: 'finding-natural-light-in-unexpected-places',
-    content: `## Light is everywhere — you just have to look sideways
+Don't upgrade your sensor until you can name the specific shot your current camera can't take. That's the only honest reason.
+$markdown$
+where type = 'featured' and title = 'Full-Frame vs. Crop Sensor: Which for Photography?';
+
+update public.blog_posts set slug = 'finding-natural-light-in-unexpected-places',
+  content = $markdown$## Light is everywhere — you just have to look sideways
 
 The golden hour gets all the press, but some of my favourite frames have come from light sources most photographers walk past: a north-facing window at 2pm, the bounce off a white wall, even the cold wash of an underground car park.
 
@@ -94,19 +71,12 @@ Pick one room in your house. Shoot the same object at four different times of da
 
 > Natural light isn't a setting on your camera. It's a habit of attention.
 
-Chase the light that's already there. The good stuff is rarely where the crowd is pointing their lenses.`,
-  },
-  {
-    id: 'standard-2',
-    type: 'standard',
-    title: 'My Approach to Editing: Creating a Consistent Photography Style',
-    category: 'Editing',
-    category_color: '#a63e2d',
-    media_url:
-      'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260508_064122_c4750c0e-7476-4b44-94a2-a85a65c63bf2.mp4',
-    display_order: 2,
-    slug: 'my-approach-to-editing-consistent-style',
-    content: `## Consistency isn't a preset — it's a set of decisions
+Chase the light that's already there. The good stuff is rarely where the crowd is pointing their lenses.
+$markdown$
+where type = 'standard' and title = 'Finding Natural Light in Unexpected Places';
+
+update public.blog_posts set slug = 'my-approach-to-editing-consistent-style',
+  content = $markdown$## Consistency isn't a preset — it's a set of decisions
 
 People ask me which preset gives a portfolio its "look." The honest answer: none of them. A consistent style comes from making the *same trade-offs* on every edit, not from slapping the same LUT on every photo.
 
@@ -124,19 +94,12 @@ People ask me which preset gives a portfolio its "look." The honest answer: none
 
 > Style is the residue of choices you're willing to repeat.
 
-Edit one image until it feels like *you*. Then make the next one match it. Do that a hundred times and people will recognise your work before they see your name.`,
-  },
-  {
-    id: 'standard-3',
-    type: 'standard',
-    title: 'Pricing Your Photography: Strategies That Work',
-    category: 'Business',
-    category_color: '#1a2b8c',
-    media_url:
-      'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_154232_f8809bd2-a6c3-4a38-908d-2005e5b3cb3e.mp4',
-    display_order: 3,
-    slug: 'pricing-your-photography-strategies-that-work',
-    content: `## Pricing is a positioning decision, not a math problem
+Edit one image until it feels like *you*. Then make the next one match it. Do that a hundred times and people will recognise your work before they see your name.
+$markdown$
+where type = 'standard' and title = 'My Approach to Editing: Creating a Consistent Photography Style';
+
+update public.blog_posts set slug = 'pricing-your-photography-strategies-that-work',
+  content = $markdown$## Pricing is a positioning decision, not a math problem
 
 Most photographers price by guessing what the market will bear, then undercutting themselves out of fear. The result is a calendar full of cheap work and a body that's exhausted. Let's fix that.
 
@@ -154,6 +117,6 @@ Most photographers price by guessing what the market will bear, then undercuttin
 
 > The cheapest photographer is rarely the busiest, and never the happiest.
 
-Charge enough that you can afford to care about every frame. Your clients can feel the difference, even if they can't name it.`,
-  },
-];
+Charge enough that you can afford to care about every frame. Your clients can feel the difference, even if they can't name it.
+$markdown$
+where type = 'standard' and title = 'Pricing Your Photography: Strategies That Work';

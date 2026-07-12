@@ -16,7 +16,9 @@ export default function ArticlesPage() {
   const { posts, loading, error, usingFallback } = useBlogPosts();
 
   const featured = posts.find((p) => p.type === 'featured');
-  const standards = posts.filter((p) => p.type === 'standard');
+  // Every post that isn't the chosen hero goes into the grid — including any
+  // additional "featured" posts, so nothing gets silently hidden.
+  const rest = posts.filter((p) => p.id !== featured?.id);
 
   return (
     <div className="articles-page">
@@ -89,9 +91,9 @@ export default function ArticlesPage() {
         )}
 
         {/* Blog grid */}
-        {standards.length > 0 && (
+        {rest.length > 0 && (
           <section className="articles-grid">
-            {standards.map((post: BlogPost) => (
+            {rest.map((post: BlogPost) => (
               <Link
                 key={post.id}
                 to={`/articles/${post.id}`}

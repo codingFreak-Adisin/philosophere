@@ -20,6 +20,14 @@ function renderInline(input: string): string {
   let out = escapeHtml(input);
   // Inline code first so its contents aren't further formatted.
   out = out.replace(/`([^`]+)`/g, (_m, code) => `<code>${code}</code>`);
+  // Images: ![alt](url) — must run before links (they share the (...) syntax).
+  out = out.replace(
+    /!\[([^\]]*)\]\(([^)\s]+)\)/g,
+    (_m, alt, url) => {
+      const safe = /^(https?:\/\/|\/|data:image\/)/.test(url) ? url : '#';
+      return `<img src="${safe}" alt="${alt}" loading="lazy" />`;
+    }
+  );
   // Links: [text](url) — only allow http(s) and relative urls.
   out = out.replace(
     /\[([^\]]+)\]\(([^)\s]+)\)/g,

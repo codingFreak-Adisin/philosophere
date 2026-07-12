@@ -130,7 +130,7 @@ export default function App() {
             <div className="flex items-center">
               <a href="#" className="flex items-center gap-2 cursor-pointer group">
                 <Globe className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
-                <span className="text-white font-semibold text-lg tracking-tight">Asme</span>
+                <span className="text-white font-semibold text-lg tracking-tight">Philosophere</span>
               </a>
               <div className="hidden md:flex items-center gap-8 ml-8">
                 <a href="#philosophy" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Features</a>

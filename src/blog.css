@@ -1,0 +1,372 @@
+/* ============================================================================
+   "Behind the Lens" articles page styles.
+   Tailwind is imported in index.css for base resets only; all blog layout is
+   custom CSS below so the spec's exact values are preserved verbatim.
+   ========================================================================== */
+
+.articles-page {
+  background: #ffffff;
+  color: #111;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Minimal top bar for navigation back to home ---- */
+.articles-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.articles-topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #111;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+}
+.articles-topbar__brand:hover svg {
+  transform: rotate(12deg);
+}
+.articles-topbar__brand svg {
+  transition: transform 0.3s ease;
+}
+.articles-topbar__back {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid #ececec;
+  background: #fff;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.articles-topbar__back:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* ---- Page shell ---- */
+.articles-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* ---- Header ---- */
+.articles-header__badge {
+  display: inline-block;
+  background: #f4f4f4;
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.articles-header__title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 64px;
+  letter-spacing: -2.5px;
+  line-height: 1.02;
+  margin: 0 0 24px 0;
+  color: #111;
+}
+.articles-header__bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+.articles-header__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+  opacity: 0.8;
+  max-width: 480px;
+  margin: 0;
+  line-height: 1.55;
+}
+.articles-header__cta {
+  flex-shrink: 0;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 26px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.33, 1, 0.68, 1),
+    background 0.2s ease;
+  align-self: center;
+}
+.articles-header__cta:hover {
+  transform: scale(1.02);
+  background: #111;
+}
+
+/* ---- Featured post ---- */
+.articles-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  min-height: 520px;
+  overflow: hidden;
+  margin-bottom: 56px;
+}
+.articles-featured__media {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+}
+.articles-featured__content {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+}
+.articles-featured__badge {
+  align-self: flex-start;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 24px;
+  text-transform: capitalize;
+}
+.articles-featured__title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  letter-spacing: -1.5px;
+  line-height: 1.08;
+  margin: 0 0 18px 0;
+  color: #111;
+}
+.articles-featured__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+.articles-featured__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 24px;
+}
+.articles-featured__author {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+/* ---- Blog grid ---- */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.articles-card {
+  display: flex;
+  flex-direction: column;
+}
+.articles-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+.articles-card__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #111;
+  margin: 0;
+  flex: 1;
+}
+
+/* ---- Category badge (shared) ---- */
+.category-badge {
+  display: inline-block;
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ---- Video container with hover interactions + corner brackets ---- */
+.video-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #000;
+  cursor: pointer;
+}
+.video-media--featured {
+  height: 100%;
+  min-height: 520px;
+  border-radius: 0;
+}
+.video-media--card {
+  aspect-ratio: 16 / 10;
+}
+.video-media__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.video-media__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.4s ease;
+  pointer-events: none;
+}
+.video-media__plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.3s ease;
+  pointer-events: none;
+}
+.video-media__plus svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 2.2;
+}
+
+/* L-shaped corner brackets, 15px inset, in all 4 corners. */
+.video-media__corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.video-media__corner--tl { top: 15px; left: 15px; border-top-width: 1.5px; border-left-width: 1.5px; }
+.video-media__corner--tr { top: 15px; right: 15px; border-top-width: 1.5px; border-right-width: 1.5px; }
+.video-media__corner--bl { bottom: 15px; left: 15px; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+.video-media__corner--br { bottom: 15px; right: 15px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+/* Hover state */
+.video-media:hover .video-media__video {
+  transform: scale(1.08);
+}
+.video-media:hover .video-media__overlay {
+  background: rgba(0, 0, 0, 0.25);
+}
+.video-media:hover .video-media__plus {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ---- Loading / empty / error states ---- */
+.articles-status {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #666;
+  padding: 80px 0;
+  text-align: center;
+}
+.articles-fallback-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #999;
+  margin-top: 48px;
+  text-align: center;
+}
+
+/* ============================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .articles-featured {
+    grid-template-columns: 1fr;
+  }
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .articles-featured__content {
+    padding: 40px;
+  }
+  .video-media--featured {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .articles-header__title {
+    font-size: 48px;
+    letter-spacing: -1.8px;
+  }
+  .articles-header__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .articles-header__cta {
+    align-self: flex-start;
+  }
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  .articles-featured__title {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+  .articles-featured__content {
+    padding: 28px;
+  }
+  .articles-shell {
+    padding: 40px 16px;
+  }
+}

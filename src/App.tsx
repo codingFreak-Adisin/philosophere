@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Globe, ArrowRight, Instagram, Twitter, Check, X, CreditCard, Compass } from 'lucide-react';
 import AboutSection from './components/AboutSection';
@@ -128,13 +129,13 @@ export default function App() {
           <div className="liquid-glass rounded-full max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
             {/* Left */}
             <div className="flex items-center">
-              <a href="#" className="flex items-center gap-2 cursor-pointer group">
+              <Link to="/" className="flex items-center gap-2 cursor-pointer group">
                 <Globe className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
                 <span className="text-white font-semibold text-lg tracking-tight">Philosophere</span>
-              </a>
+              </Link>
               <div className="hidden md:flex items-center gap-8 ml-8">
                 <a href="#philosophy" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Features</a>
-                <button onClick={() => setModalType('pricing')} className="text-white/80 hover:text-white text-sm font-medium transition-colors cursor-pointer bg-transparent border-none">Pricing</button>
+                <Link to="/articles" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Articles</Link>
                 <a href="#about" className="text-white/80 hover:text-white text-sm font-medium transition-colors">About</a>
               </div>
             </div>
@@ -272,7 +273,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
           <div className="flex items-center gap-2">
             <Globe className="w-5 h-5 text-white/40" />
-            <span className="text-white/40 text-sm font-semibold">Asme © 2026</span>
+            <span className="text-white/40 text-sm font-semibold">Philosophere © 2026</span>
           </div>
           <div className="flex gap-8 text-xs text-white/40">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
@@ -317,7 +318,7 @@ export default function App() {
                 </div>
                 
                 <h3 className="text-4xl md:text-5xl font-instrument italic text-white leading-tight">
-                  The Asme Manifesto
+                  The Philosophere Manifesto
                 </h3>
                 
                 <div className="h-px bg-white/10 w-full" />
